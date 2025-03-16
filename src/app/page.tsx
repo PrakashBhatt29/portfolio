@@ -290,21 +290,22 @@ export default function Page() {
               animate={isLoading ? "hidden" : "show"}
             >
               {projects.map((project) => (
-                <motion.div key={project.title} variants={item} className="h-full">
+                <motion.div key={project.org} variants={item} className="h-full">
                   <Card className="group h-full overflow-hidden border-0 bg-gradient-to-br from-purple-950/80 to-black/90 backdrop-blur-md text-white hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] transition-all duration-500 dark:from-purple-950/60 dark:to-black/80">
                     <CardContent className="p-6">
                       <div className="mb-4 flex items-center gap-4">
-                        <div className="relative h-14 w-14 overflow-hidden rounded-xl border border-purple-400/20 shadow-[0_0_15px_rgba(168,85,247,0.15)] dark:border-purple-400/10">
+                        <div className="relative h-14 w-14 overflow-hidden rounded-xl border border-purple-400/20 shadow-[0_0_15px_rgba(168,85,247,0.15)] dark:border-purple-400/10 flex items-center justify-center">
                           <Image
                             src={project.image || "/placeholder.svg"}
-                            alt={project.title}
+                            alt={project.org}
                             fill
-                            className="object-cover"
+                            className="object-cover object-center"
                           />
                         </div>
                         <div>
-                          <h3 className="font-semibold text-lg">{project.title}</h3>
-                          <p className="text-sm text-purple-200 dark:text-purple-300">{project.role}</p>
+                          <h3 className="font-semibold text-xl">{project.org}</h3>
+                          <p className="text-md text-purple-200 dark:text-purple-300">{project.role}</p>
+                          <p className="text-xs font-extralight text-purple-200 dark:text-purple-300">{project.timeperiod}</p>
                         </div>
                       </div>
                       <p className="text-sm text-purple-200 dark:text-purple-300 leading-relaxed">
@@ -454,8 +455,9 @@ export default function Page() {
 
 const projects = [
   {
-    title: "Junior Software Engineer Intern",
-    role: "Jan '25 - Mar '25",
+    org: "Qilo",
+    role: "Junior Software Engineer Intern",
+    timeperiod: "Jan '25 - Mar '25",
     description: "Contributed to web development, Shopify app enhancements, and UI improvements. Implemented Web Pixels for analytics and optimized Shopify theme extensions using Webpack for better performance.",
     image: "/qilo.png?height=200&width=200",
   },
