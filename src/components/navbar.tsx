@@ -12,9 +12,11 @@ import { useTheme } from "next-themes"
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const { theme } = useTheme()
 
   useEffect(() => {
+    setMounted(true)
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setIsScrolled(true)
@@ -51,7 +53,7 @@ export function Navbar() {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link href="/" className="text-xl font-bold">
-            <span
+            <div
               className={`bg-clip-text text-transparent transition-colors duration-300 ${
                 theme === "dark"
                   ? "bg-gradient-to-r from-purple-400 to-fuchsia-400"
@@ -59,11 +61,11 @@ export function Navbar() {
               }`}
             >
               P2
-            </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          {mounted && (<div className="hidden md:flex items-center gap-8">
             <ul className="flex gap-6">
               {navItems.map((item) => (
                 <li key={item.name}>
@@ -85,7 +87,7 @@ export function Navbar() {
               ))}
             </ul>
             <ThemeToggle />
-          </div>
+          </div>)}
 
           {/* Mobile Navigation Toggle */}
           <div className="flex items-center gap-4 md:hidden">

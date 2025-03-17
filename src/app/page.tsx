@@ -16,9 +16,11 @@ import Link from "next/link"
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true)
+  const [mounted, setMounted] = useState(false)
   const { theme } = useTheme()
 
   useEffect(() => {
+    setMounted(true)
     // Simulate data loading
     const timer = setTimeout(() => {
       setIsLoading(false)
@@ -26,6 +28,8 @@ export default function Page() {
 
     return () => clearTimeout(timer)
   }, [])
+
+  if (!mounted) return null
 
   const container = {
     hidden: { opacity: 0 },
@@ -279,7 +283,7 @@ export default function Page() {
                           }`}>{project.org}</h3>
                         <p
                           className={`text-sm transition-colors duration-500 ${
-                            theme === "dark" ? "text-purple-300" : "text-slate-700"
+                            theme === "dark" ? "text-purple-300" : "text-slate-800"
                           }`}
                         >
                           {project.role}
