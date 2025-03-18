@@ -401,54 +401,59 @@ export default function Page() {
             animate={isLoading ? "hidden" : "show"}
           >
             {latestProjects.map((project) => (
-                <motion.div key={project.title} variants={item}>
-                  <CardContainer className="inter-var">
-                    <CardBody className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] ${
-                    theme === "dark"
-                      ? "bg-gradient-to-br from-purple-950/60 to-black/80"
-                      : "bg-gradient-to-br from-white/90 to-purple-50/90 border border-purple-100"
-                  } backdrop-blur-md dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border`}>
-                      <CardItem
-                        translateZ="50"
-                        className={`text-xl font-bold text-neutral-600 dark:text-white ${
+              <motion.div key={project.title} variants={item}>
+                <CardContainer className="inter-var">
+                  <CardBody
+                    className={`relative transition-all duration-300 group/card w-auto sm:w-[30rem] h-auto rounded-xl p-6 border 
+                      ${
+                        theme === "dark"
+                          ? "bg-gradient-to-br from-purple-950/60 to-black/80"
+                          : "bg-gradient-to-br from-white/90 to-purple-50/90 border border-purple-100"
+                      }
+                      dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]`}
+                  >
+                    <CardItem translateZ="50" className={`text-xl transition-all duration-300 font-bold ${
                           theme === "dark"
                             ? "bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-fuchsia-200"
                             : "bg-clip-text text-transparent bg-gradient-to-r from-purple-800 via-purple-700 to-fuchsia-700"
+                        }`}>
+                      {project.title}
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="60"
+                      className={`mt-2 text-sm transition-all duration-300 max-w-sm dark:text-neutral-300 ${
+                        theme === "dark" ? "text-purple-200" : "text-purple-600"
+                      }`}
+                    >
+                      {project.description}
+                    </CardItem>
+                    <CardItem translateZ="100" className="w-full mt-4">
+                      <Image
+                        src={project.image}
+                        height="1000"
+                        width="1000"
+                        className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                        alt="thumbnail"
+                      />
+                    </CardItem>
+                    <div className="flex justify-between items-center mt-20">
+                      <CardItem
+                        translateZ={20}
+                        as={Link}
+                        href={project.url}
+                        target="__blank"
+                        className={`px-4 py-2 transition-all duration-300 rounded-xl text-xs font-normal ${
+                          theme === "dark" ? "text-purple-200" : "text-purple-800"
                         }`}
                       >
-                        {project.title}
+                        Try now →
                       </CardItem>
-                      <CardItem
-                        as="p"
-                        translateZ="60"
-                        className={`text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300 ${theme === "dark" ? "text-purple-200": "text-purple-600"}`}
-                      >
-                        {project.description}
-                      </CardItem>
-                      <CardItem translateZ="100" className="w-full mt-4">
-                        <Image
-                          src= {project.image}
-                          width="1000"
-                          height={project.image.includes(project.title) ? "600" : "400"}
-                          className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                          alt="thumbnail"
-                        />
-                      </CardItem>
-                      <div className="flex mt-20">
-                        <CardItem
-                          translateZ={20}
-                          as={Link}
-                          href={project.url}
-                          target="_blank"
-                          className={`px-4 py-2 rounded-xl text-xs font-norma ${theme === "dark" ? "text-purple-200": "text-purple-800"}`}
-                        >
-                          Try now →
-                        </CardItem>
-                      </div>
-                    </CardBody>
-                  </CardContainer>
-                </motion.div>
-              ))}
+                    </div>
+                  </CardBody>
+                </CardContainer>
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* Skeleton loaders for projects */}
