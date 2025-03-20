@@ -162,7 +162,7 @@ export default function Page() {
                 <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => window.open('https://github.com/PrakashBhatt29', "_blank")}
+                    onClick={() => window.open('https://github.com/praka2hb', "_blank")}
                     className = {`rounded-full transition-all duration-300 ${
                         theme === "dark"
                           ? "border-purple-400/30 bg-purple-950/30 backdrop-blur-sm hover:bg-purple-800/30 hover:text-white shadow-[0_0_15px_rgba(168,85,247,0.2)]"
