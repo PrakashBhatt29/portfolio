@@ -154,8 +154,7 @@ export default function Page() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              A self-taught developer passionate about building innovative solutions and creating impactful user
-              experiences through clean, efficient code.
+              A passionate developer driven to craft innovative solutions and create seamless user experiences through clean, efficient code.
             </motion.p>
             <motion.div className="flex gap-4" variants={container} initial="hidden" animate="show">
               <motion.div variants={item}>

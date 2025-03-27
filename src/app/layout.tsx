@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Prakash's Portfolio",
   description: "Professional portfolio showcasing my work as a software engineer",
   icons: {
-    icon: "/favicon.ico"
+    icon: "/icons.ico"
   }
 }
 
